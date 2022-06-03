@@ -17,7 +17,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.blockIO.r
+            value: (data: any) => data.blockIuO?.r
         },
         {
             name: "container_blockio_writes",
@@ -27,7 +27,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.blockIO.w
+            value: (data: any) => data.blockIuO?.w
         },
         {
             name: "container_cpu_percent",
@@ -47,7 +47,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.cpuStats.cpu_usage.usage_in_usermode / Math.pow(10, 9)
+            value: (data: any) => data.cpuStats?.cpu_usage?.usage_in_usermode / Math.pow(10, 9)
         },
         {
             name: "container_last_seen",
@@ -87,7 +87,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.memoryStats.stats.rss
+            value: (data: any) => data.memoryStats?.stats?.rss
         },
         {
             name: "container_memory_usage_bytes",
@@ -107,7 +107,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.netIO.rx
+            value: (data: any) => data.netIO?.rx
         },
         {
             name: "container_network_transmit_bytes_total",
@@ -117,7 +117,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.netIO.wx
+            value: (data: any) => data.netIO?.wx
         },
         {
             name: "container_pids",

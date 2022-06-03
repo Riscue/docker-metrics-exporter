@@ -28,16 +28,19 @@ app.get('/metrics', async (req, res) => {
         const metrics = [];
 
         for (const containerData of containersData) {
-            metrics.push({
-                labels: metric.labels.map(label => {
-                    return {
-                        name: label.name,
-                        value: label.value(containerData)
-                    }
-                }),
-                value: metric.value(containerData),
-                timestamp: new Date().getTime()
-            });
+            const value = metric.value(containerData);
+            if (value) {
+                metrics.push({
+                    labels: metric.labels.map(label => {
+                        return {
+                            name: label.name,
+                            value: label.value(containerData)
+                        }
+                    }),
+                    value: value,
+                    timestamp: new Date().getTime()
+                });
+            }
         }
 
         metricList.push({
