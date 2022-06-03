@@ -17,7 +17,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.blockIuO?.r
+            value: (data: any) => data.blockIO?.r
         },
         {
             name: "container_blockio_writes",
@@ -27,7 +27,7 @@ export class Metrics {
                 {name: "id", value: getId},
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
-            value: (data: any) => data.blockIuO?.w
+            value: (data: any) => data.blockIO?.w
         },
         {
             name: "container_cpu_percent",
