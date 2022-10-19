@@ -1,5 +1,5 @@
 import express, {Express} from 'express';
-import {dockerContainers, dockerContainerStats} from "dockerstats";
+import {dockerContainers, dockerContainerStats} from "../dockerstats";
 import Mustache from "mustache";
 import {Metrics} from "./metrics";
 import {Config} from "./config";
@@ -13,9 +13,7 @@ if (!fs.existsSync("/var/run/docker.sock")) {
 
 const app: Express = express();
 
-app.get('/', async (req, res) => {
-    res.send("<a href=/metrics>/metrics</a>")
-});
+app.get('/', async (req, res) => res.redirect("/metrics"));
 
 app.get('/metrics', async (req, res) => {
     const dockerContainersData = await dockerContainers();

@@ -2,6 +2,7 @@ FROM node:16 AS appbuild
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
+COPY ./dockerstats ./dockerstats
 COPY ./src ./src
 COPY tsconfig.json ./
 RUN npm run build

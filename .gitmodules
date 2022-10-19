@@ -1,0 +1,3 @@
+[submodule "dockerstats"]
+	path = dockerstats
+	url = git@github.com:Riscue/dockerstats.git
