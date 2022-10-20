@@ -1,5 +1,5 @@
 import express, {Express} from 'express';
-import {dockerContainers, dockerContainerStats} from "../dockerstats";
+import {dockerAll} from "../dockerstats";
 import Mustache from "mustache";
 import {Metrics} from "./metrics";
 import {Config} from "./config";
@@ -16,9 +16,7 @@ const app: Express = express();
 app.get('/', async (req, res) => res.redirect("/metrics"));
 
 app.get('/metrics', async (req, res) => {
-    const dockerContainersData = await dockerContainers();
-    const dockerContainerStatsData = await dockerContainerStats();
-    const containersData = dockerContainersData.map(t1 => ({...t1, ...dockerContainerStatsData.find(t2 => t2.id === t1.id)}));
+    const containersData = await dockerAll();
 
     const metricList = [];
 

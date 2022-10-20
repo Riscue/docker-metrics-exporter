@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Metric Exporter For Prometheus",
   "author": "İbrahim Akyel <ibrahim@ibrahimakyel.com>",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "build": "npx tsc",
     "start": "concurrently \"npx tsc --watch\" \"nodemon -q dist/app.js\""
