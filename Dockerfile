@@ -13,5 +13,6 @@ COPY package.json ./
 RUN npm install --omit=dev
 COPY --from=appbuild /usr/src/app/dist ./
 COPY template.mustache ./
+COPY ./dockerstats ../dockerstats
 EXPOSE 8080
 CMD ["/bin/sh", "-c", "node app.js"]
