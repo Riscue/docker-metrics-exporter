@@ -25,7 +25,7 @@ app.get('/metrics', async (req, res) => {
 
         for (const containerData of containersData) {
             const value = metric.value(containerData);
-            if (value) {
+            if (value != undefined) {
                 metrics.push({
                     labels: metric.labels.map(label => {
                         return {
