@@ -2,7 +2,6 @@ FROM node:16 AS appbuild
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
-COPY ./dockerstats ./dockerstats
 COPY ./src ./src
 COPY tsconfig.json ./
 RUN npm run build
@@ -13,6 +12,5 @@ COPY package.json ./
 RUN npm install --omit=dev
 COPY --from=appbuild /usr/src/app/dist ./
 COPY template.mustache ./
-COPY ./dockerstats ../dockerstats
 EXPOSE 8080
 CMD ["/bin/sh", "-c", "node app.js"]

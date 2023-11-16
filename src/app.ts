@@ -1,5 +1,5 @@
 import express, {Express} from 'express';
-import {dockerAll} from "../dockerstats";
+import {dockerAll} from "dockerstats";
 import Mustache from "mustache";
 import {Metrics} from "./metrics";
 import {Config} from "./config";
