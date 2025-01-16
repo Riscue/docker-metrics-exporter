@@ -26,16 +26,19 @@ app.get('/metrics', async (req, res) => {
         for (const containerData of containersData) {
             const value = metric.value(containerData);
             if (value != undefined) {
-                metrics.push({
-                    labels: metric.labels.map(label => {
-                        return {
-                            name: label.name,
-                            value: label.value(containerData)
-                        }
-                    }),
-                    value: value,
-                    timestamp: new Date().getTime()
+                const labels = metric.labels.map(label => {
+                    return {
+                        name: label.name,
+                        value: label.value(containerData)
+                    }
                 });
+                if (metrics.filter(m => m.labels.length === labels.length && (labels.length === 0 || m.labels === labels)).length === 0) {
+                    metrics.push({
+                        labels: labels,
+                        value: value,
+                        timestamp: new Date().getTime()
+                    });
+                }
             }
         }
 
