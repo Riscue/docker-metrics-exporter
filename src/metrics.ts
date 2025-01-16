@@ -30,6 +30,13 @@ export class Metrics {
             value: (data: any) => data.blockIO?.w
         },
         {
+            name: "machine_cpu_cores",
+            help: "The number of CPUs machine has",
+            type: "counter",
+            labels: [],
+            value: (data: any) => data.cpuStats.online_cpus
+        },
+        {
             name: "container_cpu_percent",
             help: "The percentage of the host’s CPU the container is using",
             type: "gauge",
@@ -48,6 +55,16 @@ export class Metrics {
                 {name: "name", value: getName},
                 {name: "image", value: getImage}],
             value: (data: any) => data.cpuStats?.cpu_usage?.usage_in_usermode / Math.pow(10, 9)
+        },
+        {
+            name: "container_cpu_usage_seconds_total",
+            help: "Cumulative total cpu time consumed in seconds.",
+            type: "counter",
+            labels: [
+                {name: "id", value: getId},
+                {name: "name", value: getName},
+                {name: "image", value: getImage}],
+            value: (data: any) => data.cpuStats?.cpu_usage?.total_usage / Math.pow(10, 9)
         },
         {
             name: "container_last_seen",
